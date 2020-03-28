@@ -124,7 +124,12 @@ function removeBook(title, books){
 // 1.As we did before, think about what kinds of aspects of movies you would like to represent. A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
 function makeMovies(title, director,duration,releaseDate,actorOrActresses,rating){
 	return {
-		
+		title: title,
+		director: director,
+		duration: duration,
+		releaseDate: releaseDate,
+		actorOrActresses: actorOrActresses,
+		rating: rating
 	}
 }
 //  You can make this as detailed as you want. You also need to decide how you will store or present your data.
