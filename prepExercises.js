@@ -87,13 +87,9 @@ function displayBooks(books){
 //  and returns true if the book is a match, and false otherwise.
 
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
-function removeBook(title,books){
-	var result = [];
-	for(var i = 0; i < books.length ; i++){
-		 result.push(books[i].title);
-	}
-		return result;
-}
+
+    
+
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.As we did before, think about what kinds of aspects of movies you would like to represent. A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
@@ -149,7 +145,7 @@ function displayMovie(movie){
 	return movie.title + ' ' + movie.duration + ' ' + movie.director + ' ' + movie.actors;
 };
 // 5.Write a function displayCast that displays the cast of a movie, including: Role , Actor/Actress name
-function displayCast()
+
 // 6.Create an array to hold the movies that you created called movies, and add your movies to it.
 
 // 7.As before, write a displayMovies function that works just like displayBooks.
