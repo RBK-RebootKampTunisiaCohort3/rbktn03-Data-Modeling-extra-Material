@@ -105,7 +105,11 @@ function displayBooks(array){
 	result += array[i].name + ", " + "by " + author + ' --' + array[i].genre + ", " + array[i].price + '.\n'}
 return result
 }
-// 7.Write a function searchBooks that, given a query and an array of books, searches the array of books for 'matching' books. You will decide what way you want to write your search algorithm. Here are some things to think about: What fields will be searched? Will you search multiple fields simultaneously (it might be best to start with one field, e.g.title)? Should the search be case-sensitive? How will the search work? Will it only work from the beginning of a field, or from anywhere within? some hints:
+// 7.Write a function searchBooks that, given a query and an array of books, searches the array of books for 'matching' books. 
+//You will decide what way you want to write your search algorithm. 
+//Here are some things to think about: What fields will be searched? Will you search multiple fields simultaneously 
+//(it might be best to start with one field, e.g.title)? 
+//Should the search be case-sensitive? How will the search work? Will it only work from the beginning of a field, or from anywhere within? some hints:
 
 //  'Harry Potter'.toLowerCase();    // => 'harry potter'
 //  'Harry Potter'.substr(0, 5);     // => 'Harry'
@@ -115,12 +119,43 @@ return result
 //  'Harry Potter'.indexOf('dog');  // => -1
 //  A good starting point would be to write a function isMatch that accepts two arguments – the query and a single book –
 //  and returns true if the book is a match, and false otherwise.
+function isMatch(books, name) {					// this function searches for any query, that matches the name of book, author, genre
+	let values;														// It could be a part of the name like pot or part of the author name like Jay	
+	if (typeof name === "string") {
+		name = name.toLowerCase();
+		for (let j = 0; j < books.length; j++) {
+			values = Object.values(books[j]);
+			for (let i = 0; i < values.length; i++) {
+				if (typeof values[i] === "object") {
+					values[i] = Object.values(values[i]);
+					for (let n = 0; n < values[j][i].length; n++) {
+						if (values[i][n].toLowerCase().indexOf(name) !== -1)
+						return true;
+					}
+				}	
+				else if (typeof values[i] === "string") {
+					if (values[i].toLowerCase().indexOf(name) !== -1)
+						return true;
+				}
+			}
+		}	
+	}	
+	return false
+}
 
-// 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
-
+// 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with 
+//the provided title.
+function removeBook(array, book) {
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].name.toLowerCase() === book.toLowerCase())
+			array.splice(i,1);
+	}
+	return array;
+}
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
-// 1.As we did before, think about what kinds of aspects of movies you would like to represent. A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
+// 1.As we did before, think about what kinds of aspects of movies you would like to represent. 
+//A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
 
 //  You can make this as detailed as you want. You also need to decide how you will store or present your data.
 //  For example, you can use an array to represent the actors/actresses.
