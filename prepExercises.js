@@ -19,7 +19,22 @@
 //  Description
 
 // 2.In terms of the properties of books that you thought of, represent the following books as data:
-
+var book1 = {
+	Title: 'Harry Potter and the Sorcerer\'s Stone',
+	Author: 'J.K.Rowling',
+	MSRP: '6,5 $',
+	Genre: 'fantasy',
+	NumberOfPages:  '223',
+	Description: 'A young wizard that fights a powerful wizard that killed his parents.'
+}
+var book2 = {
+	Title: 'Romeo and Juliet',
+	Author: 'William Shakespeare',
+	MSRP: '5,34 $',
+	Genre: 'Romance',
+	NumberOfPages:  '480',
+	Description: 'Two lovers that go through the forbidden love experience';
+}
 //  Harry Potter and the Sorcerer's Stone (J.K. Rowling)
 //  Romeo and Juliet (William Shakespeare)
 //  Structure and Interpretation of Computer Programs (Gerald Jay Sussman, Hal Abelson)
