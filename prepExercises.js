@@ -87,7 +87,13 @@ function displayBooks(books){
 //  and returns true if the book is a match, and false otherwise.
 
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
-
+function removeBook(title,books){
+	var result = [];
+	for(var i = 0; i < books.length ; i++){
+		 result.push(books[i].title);
+	}
+		return result;
+}
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.As we did before, think about what kinds of aspects of movies you would like to represent. A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
@@ -99,7 +105,7 @@ function displayBooks(books){
 //  is the rating from critics? Rotten Tomatoes (a famous American website that rates how good movies are)? Some combination?
 
 // 2.Make five more movie objects using the same format you decided upon.
-
+ 
 // 3. Write a factory function for movies. HINT: What is a factory function? We explained it above!
 
 // 4.Write a function displayMovie that works like displayBook, but for movies.
