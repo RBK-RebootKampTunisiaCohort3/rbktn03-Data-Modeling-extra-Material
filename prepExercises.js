@@ -30,7 +30,7 @@ var book1 = {
 };
 var book2 = {
     title: 'Romeo and Juliet',
-    author: 'William Shakespeare',
+    author1: 'William Shakespeare',
     author2: 'N/A',
     price: '15,34 $',
     genre: 'Romance',
@@ -39,7 +39,7 @@ var book2 = {
 };
 var book3 = {
     title: 'Structure and Interpretation of Computer Programs',
-    author: 'Gerald Jay Sussman',
+    author1: 'Gerald Jay Sussman',
     author2: 'Hal Abelson',
     price: '20,00 $',
     genre: 'Textbook',
@@ -91,7 +91,6 @@ function displayBooks(books) {
 //  // => '1. Harry Potter and the Sorcerer's Stone... /n 2. Snow Crash, ...'
 
 // 7.Write a function searchBooks that, given a query and an array of books, searches the array of books for 'matching' books. You will decide what way you want to write your search algorithm. Here are some things to think about: What fields will be searched? Will you search multiple fields simultaneously (it might be best to start with one field, e.g.title)? Should the search be case-sensitive? How will the search work? Will it only work from the beginning of a field, or from anywhere within? some hints:
-
 //  'Harry Potter'.toLowerCase();    // => 'harry potter'
 //  'Harry Potter'.substr(0, 5);     // => 'Harry'
 //   var query = 'Harry';
@@ -102,7 +101,14 @@ function displayBooks(books) {
 //  and returns true if the book is a match, and false otherwise.
 
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
+function reomvebook(str){
+for(i=0;i<books.length;i++){
+	if(books[i].title===str){
+		delete books[i]
+	}
+}	
 
+}
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.As we did before, think about what kinds of aspects of movies you would like to represent. A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
