@@ -92,7 +92,7 @@ function displayBooks(books) {
 // 7.Write a function searchBooks that, given a query and an array of books, searches the array of books for 'matching' books. You will decide what way you want to write your search algorithm. Here are some things to think about: What fields will be searched? Will you search multiple fields simultaneously (it might be best to start with one field, e.g.title)? Should the search be case-sensitive? How will the search work? Will it only work from the beginning of a field, or from anywhere within? some hints:
 function searchBooks(query, books){
 	var matchingBook = "";
-	for (var i = 0; i < books.length; i++){
+	for(var i = 0; i < books.length; i++){
 		if(isMatch(query, books[i]) === true){
 		matchingBook += 'Match found:  '+(i + 1) + '. ' + displayBook(books[i]) + '\n';
 		}
@@ -108,13 +108,23 @@ function searchBooks(query, books){
 //  A good starting point would be to write a function isMatch that accepts two arguments – the query and a single book –
 //  and returns true if the book is a match, and false otherwise.
 function isMatch(query, book){
-	if (book.title.match(query)){;
+	for(var i = 0; i < books.length; i++){
+		if(book.title.match(query)){
 		return true;
 	}
 		return false;
+	}
 }
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
-
+function removeBook(title, books){
+	var newBooks = [];
+	for(var i = 0; i < books.length; i++){
+		if(isMatch(title, books[i]) === false){
+			newBooks.push(books[i]);		
+		}
+	}		  
+		return newBooks;
+}
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.As we did before, think about what kinds of aspects of movies you would like to represent. A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
