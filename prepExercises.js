@@ -21,8 +21,7 @@
 // 2.In terms of the properties of books that you thought of, represent the following books as data:
 var book1 = {
 	title: 'Harry Potter and the Sorcerer\'s Stone',
-	author1: 'J.K.Rowling',
-	author2: 'N/A',
+	author: ['J.K.Rowling'],
 	msrp: '6,5 $',
 	genre: 'fantasy',
 	numberOfPages:  '223',
@@ -30,8 +29,7 @@ var book1 = {
 };
 var book2 = {
 	title: 'Romeo and Juliet',
-	author1: 'William Shakespeare',
-	author2: 'N/A',
+	author: ['William Shakespeare'],
 	msrp: '5,34 $',
 	genre: 'Romance',
 	numberOfPages:  '480',
@@ -39,8 +37,7 @@ var book2 = {
 };
 var book3 = {
 	title: 'Structure and Interpretation of Computer Programs',
-	author1: 'Gerald Jay Sussman',
-	author2: 'Hal Abelson',
+	author: ['Gerald Jay Sussman', 'Hal Abelson'],
 	msrp: '51,00 $',
 	genre: 'Textbook',
 	numberOfPages:  '657',
@@ -53,11 +50,10 @@ var book3 = {
 //  Three other books (see this list for ideas)
 
 // 3.You may have been rewriting the same type of object over and over. We need to stay DRY (Do Not Repeat). Write a function makeBook that takes as arguments different attributes of a book and returns an object representing that book that has the proper structure (we call this a factory function).
-function makeBook(title, author1, author2, msrp, genre, numberOfPages, description){
+function makeBook(title, author, msrp, genre, numberOfPages, description){
 	return {
 		title: title,
-		author1: author1,
-		author2: author2,
+		authors: author,
 		msrp: msrp,
 		genre: genre,
 		numberOfPages: numberOfPages,
@@ -68,7 +64,7 @@ function makeBook(title, author1, author2, msrp, genre, numberOfPages, descripti
 
 // var sorcerersStone = { /* ... */ }
 function displayBook(book) {
-   return book.title + ', by ' + book.author1 + ' -- ' + book.genre + ', ' + book.msrp;
+   return book.title + ', by ' + book.author + ' -- ' + book.genre + ', ' + book.msrp;
 }
 //  displayBook(sorcerersStone);
 //  // => 'Harry Potter and the Sorcerer's Stone, by J.K. Rowling -- fantasy, $24.99'
@@ -108,12 +104,10 @@ function searchBooks(query, books){
 //  A good starting point would be to write a function isMatch that accepts two arguments – the query and a single book –
 //  and returns true if the book is a match, and false otherwise.
 function isMatch(query, book){
-	for(var i = 0; i < books.length; i++){
-		if(book.title.match(query)){
+	if(book.title.match(query)){
 		return true;
 	}
-		return false;
-	}
+		return false;		
 }
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
 function removeBook(title, books){
@@ -128,7 +122,11 @@ function removeBook(title, books){
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.As we did before, think about what kinds of aspects of movies you would like to represent. A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
-
+function makeMovies(title, director,duration,releaseDate,actorOrActresses,rating){
+	return {
+		
+	}
+}
 //  You can make this as detailed as you want. You also need to decide how you will store or present your data.
 //  For example, you can use an array to represent the actors/actresses.
 //  But if you want to include their roles, maybe you want to use something else. Did he/she win any awards?
