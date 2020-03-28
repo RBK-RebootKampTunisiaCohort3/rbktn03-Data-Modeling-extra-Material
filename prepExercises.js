@@ -141,8 +141,6 @@ function searchBooks(array, query) {
 		for(var key in array[i]) {
 
 			var val = array[i][key];
-
-			console.log(array[i][key]);
 			
 			if((val.toString().substr(0, querylower.length)) === querylower) {
 
@@ -369,7 +367,55 @@ var movie5 = {
 
 // 3. Write a factory function for movies. HINT: What is a factory function? We explained it above!
 
+function makeMovie(ttl, direct, typ, dur, relDate, theactors, rat) {
+
+	var act = [];
+
+	for (var i = 0; i < theactors.length; i += 1) {
+		
+		act.push({name: theactors[i]['name'], sex: theactors[i]['sex'], age: theactors[i]['age']});
+
+	}
+
+	return {
+
+				title: ttl,
+				director: direct,
+				type:typ,
+				duration: dur,
+				releaseDate: relDate,
+				actors: act,
+				rating: rat 
+
+	};
+
+}
+
 // 4.Write a function displayMovie that works like displayBook, but for movies.
+
+var movies = [movie1, movie2, movie3, movie4, movie5];
+
+function displayMovie(movie) {
+
+	var result = movie.actors[0]["name"] + " who is a " + movie.actors[0]["age"] + " old " + movie.actors[0]["sex"] + " actor";
+
+	for(var i = 1; i < movie.actors.length; i += 1) {
+
+		result += ", " + movie.actors[i]["name"] + " who is a " + movie.actors[i]["age"] + " old " + movie.actors[i]["sex"] + " actor"
+
+	}
+
+	return movie.title + ' directed by '+ movie.director + ', is a ' + movie.type + ' movie, its duration is ' + movie.duration + ', it was released in ' + movie.releaseDate + ' and was rated by ' + movie.rating + '. The actors who has participated in that movie are ' + result ;
+
+}
+
+
+
+function displayMovies(arr) {
+
+	
+
+}
 
 // 5.Write a function displayCast that displays the cast of a movie, including: Role , Actor/Actress name
 
