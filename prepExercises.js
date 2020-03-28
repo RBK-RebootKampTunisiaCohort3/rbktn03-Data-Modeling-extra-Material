@@ -66,13 +66,13 @@ function displayBook(book) {
 }
 // 5.Create an array called books that holds all of the books that you created above.
 var books = [sorcerersStone = {
-	title: 'Harry Potter and the Sorcerer\'s Stone',
+	title: 'harry potter and the sorcerer\'s stone',
 	author: 'J.K. Rowling',
 	genre: 'Fantasy',
 	numberOfPages: 800
 },
 romeoAndJuliet = {
-	title: 'Romeo and Juliet',
+	title: 'romeo and juliet',
 	author: 'William Shakespeare',
 	genre: 'Romance',
 	numberOfPages: 600
@@ -95,6 +95,30 @@ function displayBooks (books) {
 
 // 7.Write a function searchBooks that, given a query and an array of books, searches the array of books for 'matching' books. You will decide what way you want to write your search algorithm. Here are some things to think about: What fields will be searched? Will you search multiple fields simultaneously (it might be best to start with one field, e.g.title)? Should the search be case-sensitive? How will the search work? Will it only work from the beginning of a field, or from anywhere within? some hints:
 
+////////////////// if the query matches the title ///////////////////
+function isMatch (query, book) {
+	var queryLc = query.toLowerCase()
+	for (var i = 0; i <= queryLc.length; i++){
+		if (queryLc.substr(0, i) === book['title'].substr(0, query.length)){
+			return true
+		}
+	}
+	return false
+}
+
+/////////////////// if the query matches a book title in the array of books /////////////////
+function isMatch (query, books) {
+//debugger;
+	var queryLc = query.toLowerCase()
+	for (var j = 0; j <= books.length; j++){
+	for (var i = 0; i <= queryLc.length; i++){
+		if (queryLc.substr(0, i) === books[j]['title'].substr(0, query.length)){
+			return true
+		}
+	}
+}
+	return false
+}
 //  'Harry Potter'.toLowerCase();    // => 'harry potter'
 //  'Harry Potter'.substr(0, 5);     // => 'Harry'
 //   var query = 'Harry';
@@ -105,7 +129,16 @@ function displayBooks (books) {
 //  and returns true if the book is a match, and false otherwise.
 
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
-
+function removeBook (title, books) {
+//debugger;
+	var books2 = books
+	for (var i = 0; i < books2.length; i++) {
+		if (title === books2[i]['title']){
+				books2.splice(i,1)
+		}
+	}
+	return books2
+}
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.As we did before, think about what kinds of aspects of movies you would like to represent. A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
