@@ -413,19 +413,80 @@ function displayMovie(movie) {
 
 function displayMovies(arr) {
 
+	var result = "";
+
+	for(var i = 0; i < arr.length; i += 1) {
+
+	result += (i + 1) + ". " + displayMovie(arr[i]) + "\n"
 	
+	}
+
+return result;
 
 }
 
 // 5.Write a function displayCast that displays the cast of a movie, including: Role , Actor/Actress name
 
+function displayCasts(movie) {
+
+var casts = '';	
+
+	for(var i = 0; i < movie.actors.length; i = i + 1) {
+
+	casts = casts + movie.actors[i].name + ' is a ' + movie.actors[i].sex + ' person which is ' + movie.actors[i].age + ' years old.\n';
+
+	}
+
+return casts;
+
+}
+
 // 6.Create an array to hold the movies that you created called movies, and add your movies to it.
 
+
+// Done in question 4
+
+
 // 7.As before, write a displayMovies function that works just like displayBooks.
+
+
+// Done in question 4
+
 
 // 8. Calculate the average length of your movies by writing a function called averageLength that will accept an array of movies as a parameter and output the average length. The difficulty of this problem is dependent on how you have chosen to store the duration.
 
 // How about averageRating?
+
+function average(array) {
+
+	var sum = 0;
+
+	for(var i = 0; i < array.length; i += 1) {
+
+		sum += array[i]["duration"];
+
+	}
+
+return sum / array.length;
+
+}
+
+///////
+
+
+function averageRating(array) {
+
+	var sum = 0;
+
+	for(var i = 0; i < array.length; i += 1) {
+
+		sum += array[i]["rating"];
+
+	}
+
+return sum / array.length;
+
+}
 
 // 9.How about searching your movies array? Write a function that works like searchBooks, but for movies.
 
@@ -449,3 +510,4 @@ function displayMovies(arr) {
 // 3.Can you think of a way to write a more abstract displayItem function that works for books and movies (depending on how you have structured your objects, this may or may not work well)?
 
 // 4.Write a more general searchItems function that accepts as parameters the query, items to search, and an array of keys that should be searched. Refactor searchMovies and searchBooks to use this function.
+
