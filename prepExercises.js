@@ -105,13 +105,51 @@ function removeBook(title,books){
 //  is the rating from critics? Rotten Tomatoes (a famous American website that rates how good movies are)? Some combination?
 
 // 2.Make five more movie objects using the same format you decided upon.
- 
+ var movie1 = {
+ 	title : 'assassin \s creed',
+ 	duration : '116 minutes',
+ 	director : 'Justin Kurzel',
+ 	actors : 'Michael Fassbender,Jeremy Irons'
+ };
+ var movie2 = {
+ 	title : 'Fast & Furious 9',
+ 	duration : '2h 15m',
+ 	director : 'Justin Lin',
+ 	actors : 'Vin Diesel, Justin Lin, Clayton Townsend, Neal H. Moritz, Samantha Vincent, Joe Roth, Jeff Kirschenbaum'
+ };
+ var movie3 = {
+ 	title : 'lucy',
+ 	duration : '90 minutes',
+ 	director : 'Luc Besson',
+ 	actors : '	Scarlett Johansson,Morgan Freeman,Choi Min-sik'
+ };
+ var movie4 = {
+ 	title : 'now you see me',
+ 	duration : '115 minutes',
+ 	director : 'Louis Leterrier',
+ 	actors : 'Jesse Eisenberg,Mark Ruffalo,Woody Harrelson,Mélanie Laurent,Isla Fisher,Dave Franco,Common,Michael Caine,Morgan Freeman'
+ };
+ var movie5 = {
+ 	title : 'the lion king',
+ 	duration : '88 minutes',
+ 	director : 'Roger Allers,Rob Minkoff',
+ 	actors : 'Matthew Broderik,Jonathan Taylor'
+ };
 // 3. Write a factory function for movies. HINT: What is a factory function? We explained it above!
-
+function makemovie(title,duration,director,actors){
+	return {
+		title : title,
+		duration : duration,
+		director : director,
+		actors : actors
+	}
+};
 // 4.Write a function displayMovie that works like displayBook, but for movies.
-
+function displayMovie(movie){
+	return movie.title + ' ' + movie.duration + ' ' + movie.director + ' ' + movie.actors;
+};
 // 5.Write a function displayCast that displays the cast of a movie, including: Role , Actor/Actress name
-
+function displayCast()
 // 6.Create an array to hold the movies that you created called movies, and add your movies to it.
 
 // 7.As before, write a displayMovies function that works just like displayBooks.
