@@ -53,7 +53,7 @@ var book3 = {
 	title: "Structure and Interpretation of Computer Programs", 
 	Author: "Gerald Jay Sussman & Hal Abelson",
 	MSRP: 350,
-	Genre: "harry technology",
+	Genre: "technology",
 	NumberOfPages: 315,
 	Description: "a book which talks about the development of computer programs"
 
@@ -86,7 +86,15 @@ return {
 //  // => 'Harry Potter and the Sorcerer's Stone, by J.K. Rowling -- fantasy, $24.99'
 // The output string above is only an example. What information is most important to you? How can you make that information easier to read for people?
 
+function displayBook(book) {
+
+	return book.title + ' writen by '+ book.Author + ', is a ' + book.Genre + ' book, its number of pages is ' + book.NumberOfPages + ', it is a ' + book.Description + ', its price is ' + book.MSRP+'$' ;
+
+}
+
 // 5.Create an array called books that holds all of the books that you created above.
+
+var books = [book1, book2, book3];
 
 // 6.Your function displayBook can be used to display a single book as a string. Now, write a function displayBooks that, given an array of books, returns a single string consisting of all of the books. Use the function displayBook to format all of the books. Each book should be numbered and separated with a newline (we also call this a line break) character so that each book is shown on a separate line in the console. The newline character is specified with a special escaped character in a string:
 
@@ -96,6 +104,20 @@ return {
 //  }
 //  displayBooks(books);
 //  // => '1. Harry Potter and the Sorcerer's Stone... /n 2. Snow Crash, ...'
+
+function displayBooks(arr) {
+
+	var result = "";
+
+	for(var i = 0; i < arr.length; i += 1) {
+
+	result += (i + 1) + ". " + displayBook(arr[i]) + "\n"
+	
+	}
+
+return result;
+
+}
 
 // 7.Write a function searchBooks that, given a query and an array of books, searches the array of books for 'matching' books. You will decide what way you want to write your search algorithm. Here are some things to think about: What fields will be searched? Will you search multiple fields simultaneously (it might be best to start with one field, e.g.title)? Should the search be case-sensitive? How will the search work? Will it only work from the beginning of a field, or from anywhere within? some hints:
 
@@ -108,7 +130,37 @@ return {
 //  A good starting point would be to write a function isMatch that accepts two arguments – the query and a single book –
 //  and returns true if the book is a match, and false otherwise.
 
+function searchBooks(array, query) {
+
+	var querylower = query.toLowerCase();
+
+	var result = '';
+
+	for(var i = 0; i < array.length; i = i + 1) {
+
+		for(var key in array[i]) {
+
+			var val = array[i][key];
+
+			console.log(array[i][key]);
+			
+			if((val.toString().substr(0, querylower.length)) === querylower) {
+
+				result = result + 'book' + (i + 1) + '\n' ;
+
+			}
+
+		}
+
+	}
+
+return result;
+
+}
+
+
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
+
 
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
