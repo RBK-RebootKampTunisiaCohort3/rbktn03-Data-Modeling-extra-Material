@@ -490,10 +490,38 @@ return sum / array.length;
 
 // 9.How about searching your movies array? Write a function that works like searchBooks, but for movies.
 
+function searchMovies(array, query) {
+
+	var querylower = query.toLowerCase();
+
+	var result = '';
+
+	for(var i = 0; i < array.length; i = i + 1) {
+
+		for(var key in array[i]) {
+
+			var val = array[i][key].toString().toLowerCase();
+
+
+			if((val.substr(0, querylower.length)) === querylower) {
+
+				result = result + 'movie' + (i + 1) + '\n' ;
+
+			}
+
+		}
+
+	}
+
+return result;
+
+}
+
+
+
 // ~~~~~~~~~~~~~~~~~~~~~~ Advanced ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.Tagging System: Some books have multiple categories, have won awards, are on a best-seller list, or have other special characteristics. Let's incorporate a tagging system that will allow us to represent all of these. Write functions addTag and removeTag that each accept a book and a tag as parameters, and either add tags or remove tags respectively.
-
 //  Considerations:
 //  If you included a genre key, replace it with a tag.
 //  What if you use addTag on a book that has no tags yet?
@@ -501,6 +529,62 @@ return sum / array.length;
 //  Add some tags to multiple books, like 'bestseller' or 'pulitzer'.
 //  Extend
 //  Extend searchBooks to work with tags.
+
+var newBook1 = {
+
+	id: "SN1",
+	title: "harry Potter and the Sorcerer's Stone",
+	Author: "J.K. Rowling",
+	MSRP: 150,
+	Tag: ["science fiction"],
+	NumberOfPages: 400,
+	Description: "tale of a little boy who has a magic power"
+
+};
+
+var newBook2 = {
+
+	id: "SN2",
+	title: "Romeo and Juliet",
+	Author: "William Shakespeare",
+	MSRP: 220,
+	Tag: ["romance"],
+	NumberOfPages: 467,
+	Description: "love story"
+
+};
+
+var newBook3 = {
+
+	id: "SN3",
+	title: "Structure and Interpretation of Computer Programs", 
+	Author: "Gerald Jay Sussman & Hal Abelson",
+	MSRP: 350,
+	Tag: ["technology"],
+	NumberOfPages: 315,
+	Description: "a book which talks about the development of computer programs"
+
+};
+
+function addTag(object, tag) {
+
+	result = '';
+
+	for(var i = 0; i < object.Tag.length; i = i + 1) {
+
+		if(object.Tag[i] === tag ) {
+
+			return 'this tag already exists!';
+
+		}
+
+	}	
+
+object.Tag.push(tag);	
+
+return 'the new tag list is: ' + object.Tag;
+
+};
 
 // 2.Let's revisit your removeBooks function: what would happen if you had two books with the same title, but different authors? Would your algorithm remove both books? This is a common problem that we usually solve by providing a unique identifier for each item.
 
