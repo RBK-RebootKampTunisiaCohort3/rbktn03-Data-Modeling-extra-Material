@@ -75,13 +75,18 @@ function displayBook(book) {
 // The output string above is only an example. What information is most important to you? How can you make that information easier to read for people?
 
 // 5.Create an array called books that holds all of the books that you created above.
+var books = [book1, book2, book3];
+
 
 // 6.Your function displayBook can be used to display a single book as a string. Now, write a function displayBooks that, given an array of books, returns a single string consisting of all of the books. Use the function displayBook to format all of the books. Each book should be numbered and separated with a newline (we also call this a line break) character so that each book is shown on a separate line in the console. The newline character is specified with a special escaped character in a string:
 
-//  // Enter the below line into a console 'Hello /n World!'; // the 'backslash n' character is a newline
-//  function displayBooks(books) {
-//        // ...
-//  }
+function displayBooks(books) {
+    var result = "";
+    for(var i = 0; i < books.length; i++){
+        result += (i + 1) + '. ' + displayBook(books[i]) + '\n';
+    }
+   return result;
+}
 //  displayBooks(books);
 //  // => '1. Harry Potter and the Sorcerer's Stone... /n 2. Snow Crash, ...'
 
