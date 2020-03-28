@@ -146,36 +146,80 @@ function isMatch(books, name) {					// this function searches for any query, tha
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with 
 //the provided title.
 function removeBook(array, book) {
+	let check = 0;
 	for (let i = 0; i < array.length; i++) {
-		if (array[i].name.toLowerCase() === book.toLowerCase())
+		if (array[i].name.toLowerCase() === book.toLowerCase()) {
 			array.splice(i,1);
+			check++;
+		}
 	}
-	return array;
+	if(check === 0)
+		return "Name doesn't exist";
+	 return array;
 }
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.As we did before, think about what kinds of aspects of movies you would like to represent. 
 //A few ideas are: Title ,Director ,Duration ,Release Date ,Actors/Actresses ,Studio(s) ,Synopsis ,Rating
-
 //  You can make this as detailed as you want. You also need to decide how you will store or present your data.
 //  For example, you can use an array to represent the actors/actresses.
 //  But if you want to include their roles, maybe you want to use something else. Did he/she win any awards?
 //   Even the rating of a movie is open to interpretation –
 //  is the rating from critics? Rotten Tomatoes (a famous American website that rates how good movies are)? Some combination?
+var movie1 = {
+	title: "Mirage"
+	genre: ["Drama", "Mystery", "Romance" ],
+	"release date": 2018,
+	rating: 0.75,
+	cast: {actor1: {name: "Mario Casas", role: "Vera Roy" }, actor2: {name: "Bárbara Lennie", role: "Inspector Leyra"}},
+	duration: 128
+}
+var movie2 = {
+	title: "The invisible guest",
+	genre: ["Crime", "Mystery", "Thriller" ],
+	"release date": 2016,
+	rating: 0.67,
+	cast: {actor1: {name: "Mario Casas", role: "Adrián Doria, successful businessman, husband and father"}, 
+					actor2: {name: "Bárbara Lennie", role: "Laura Vidal, Adrián's lover" }},
+	duration: 106
+}
 
+var movie3 = {
+	title: "The platform",
+	genre: ["Horror", "Sci-Fi", "Thriller"],
+	"release date": 2019,
+	rating: 0.83,
+	cast: {actor1 : {name:"Iván Massagué", role: "Goreng"}, actor2: { name: "Zorion Eguileor", role: "Trimagasi" }}
+	duration: 94
+}
 // 2.Make five more movie objects using the same format you decided upon.
-
 // 3. Write a factory function for movies. HINT: What is a factory function? We explained it above!
+function makeMovie (title, [g1, g2, g3], releasedate, rating, [name1, role1, name2, role2],duration) {
+	return {
+		title: title,
+		genre: [g1, g2, g3],
+		"release date": releasedate,
+		rating: rating,
+		cast: {actor1 : {name: name1, role: role1}, actor2: { name: name2, role: role2 }},
+		duration: duration
+	}
+}
 
 // 4.Write a function displayMovie that works like displayBook, but for movies.
-
+function displayMovie(movie){
+	return movie.title + " - " +  movie["release date"] + ", Genre: " + movie.genre[0] + "."
+}
 // 5.Write a function displayCast that displays the cast of a movie, including: Role , Actor/Actress name
-
+function displayCast(movie){
+	return movie.cast.actor1.name + " as " + movie.cast.actor1.role + " and " + 
+	movie.cast.actor2.name + " as " + movie.cast.actor2.role + ".";
+}
 // 6.Create an array to hold the movies that you created called movies, and add your movies to it.
 
 // 7.As before, write a displayMovies function that works just like displayBooks.
 
-// 8. Calculate the average length of your movies by writing a function called averageLength that will accept an array of movies as a parameter and output the average length. The difficulty of this problem is dependent on how you have chosen to store the duration.
+// 8. Calculate the average length of your movies by writing a function called averageLength that will accept an array of movies as a parameter and 
+// output the average length. The difficulty of this problem is dependent on how you have chosen to store the duration.
 
 // How about averageRating?
 
