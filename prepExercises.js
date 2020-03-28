@@ -26,7 +26,55 @@
 //  NOTE: Did you account for the possibility of two authors? If not, update your model to handle multiple authors.
 //  Three other books (see this list for ideas)
 
+var book1 = {
+
+	title: "harry Potter and the Sorcerer's Stone",
+	Author: "J.K. Rowling",
+	MSRP: 150,
+	Genre: "science fiction",
+	NumberOfPages: 501,
+	Description: "tale of a little boy who has a magic power"
+
+};
+
+var book2 = {
+
+	title: "Romeo and Juliet",
+	Author: "William Shakespeare",
+	MSRP: 220,
+	Genre: "romance",
+	NumberOfPages: 467,
+	Description: "love story"
+
+};
+
+var book3 = {
+
+	title: "Structure and Interpretation of Computer Programs", 
+	Author: "Gerald Jay Sussman & Hal Abelson",
+	MSRP: 350,
+	Genre: "harry technology",
+	NumberOfPages: 315,
+	Description: "a book which talks about the development of computer programs"
+
+};
+
 // 3.You may have been rewriting the same type of object over and over. We need to stay DRY (Do Not Repeat). Write a function makeBook that takes as arguments different attributes of a book and returns an object representing that book that has the proper structure (we call this a factory function).
+
+function makeBook(ttl, auth, price, gnr, numPages, descr) {
+
+return {
+
+	title: ttl,
+	Author: auth,
+	MSRP: price,
+	Genre: gnr,
+	NumberOfPages: numPages,
+	Description: descr
+
+	};
+
+}
 
 // 4.Look at one of your book objects in the console. This is the object inspector. The object inspector is nice to have, but it will be easier to have a function to display the more important information easily. Write a function called displayBook that takes a book as an argument, and returns the important information in a more readable way, for example:
 
