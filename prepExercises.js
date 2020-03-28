@@ -25,7 +25,7 @@
 //  NOTE: Did you account for the possibility of two authors? If not, update your model to handle multiple authors.
 //  Three other books (see this list for ideas)
 var book1 = {
-	name: "Harry Potter and the Sorcerer's Stone";,
+	name: "Harry Potter and the Sorcerer's Stone",
 	author: "J.K. Rowling",
 	genre: "Fantasy",
 	"number of pages": 223,
@@ -98,12 +98,9 @@ books = [book1, book2, book3]
 function displayBooks(array){
 	let author;
     let result = "";
-    for(let i = 0; i < array.length; i++) {
-	if (typeof array[i].author === "object")
-		author = array[i].author.author1 + " and " + array[i].author.author2;
-	else author = array[i].author;
-	result += array[i].name + ", " + "by " + author + ' --' + array[i].genre + ", " + array[i].price + '.\n'}
-return result
+    for(let i = 0; i < array.length; i++)
+    	result += displayBook(array[i]) + "\n";
+    return result;
 }
 // 7.Write a function searchBooks that, given a query and an array of books, searches the array of books for 'matching' books. 
 //You will decide what way you want to write your search algorithm. 
@@ -167,7 +164,7 @@ function removeBook(array, book) {
 //   Even the rating of a movie is open to interpretation –
 //  is the rating from critics? Rotten Tomatoes (a famous American website that rates how good movies are)? Some combination?
 var movie1 = {
-	title: "Mirage"
+	title: "Mirage",
 	genre: ["Drama", "Mystery", "Romance" ],
 	"release date": 2018,
 	rating: 0.75,
@@ -189,7 +186,8 @@ var movie3 = {
 	genre: ["Horror", "Sci-Fi", "Thriller"],
 	"release date": 2019,
 	rating: 0.83,
-	cast: {actor1 : {name:"Iván Massagué", role: "Goreng"}, actor2: { name: "Zorion Eguileor", role: "Trimagasi" }}
+	cast: {actor1 : {name:"Iván Massagué", role: "Goreng"}, 
+					actor2: { name: "Zorion Eguileor", role: "Trimagasi" }},
 	duration: 94
 }
 // 2.Make five more movie objects using the same format you decided upon.
@@ -215,16 +213,55 @@ function displayCast(movie){
 	movie.cast.actor2.name + " as " + movie.cast.actor2.role + ".";
 }
 // 6.Create an array to hold the movies that you created called movies, and add your movies to it.
+movies = [movie1, movie2, movie3];
 
 // 7.As before, write a displayMovies function that works just like displayBooks.
-
+function displayMovies(array){
+    let result = "";
+    for(let i = 0; i < array.length; i++) {
+	result += displayMovie(array[i]) + '\n'}
+return result
+}
 // 8. Calculate the average length of your movies by writing a function called averageLength that will accept an array of movies as a parameter and 
 // output the average length. The difficulty of this problem is dependent on how you have chosen to store the duration.
-
+function avgDuration(array){
+	let result = 0;
+	for(let i = 0; i < array.length; i++)
+		result += array[i].duration
+	let avg = result / array.length
+	return "Average duration for " + array.length + " movies is " + avg.toFixed(2) + " minutes.";
+}
 // How about averageRating?
-
+function avgRating(array){
+	let result = 0;
+	for(let i = 0; i < array.length; i++)
+		result += array[i].rating
+	let avg = result / array.length
+	return "Average rating for " + array.length + " movies is " + 100 * avg.toFixed(2) + "%.";
+}
 // 9.How about searching your movies array? Write a function that works like searchBooks, but for movies.
-
+function isMatch(movies, name) {					// this function searches for any query, that matches the name of book, author, genre
+	let values;														// It could be a part of the name like pot or part of the author name like Jay	
+	if (typeof name === "string") {
+		name = name.toLowerCase();
+		for (let j = 0; j < movies.length; j++) {
+			values = Object.values(movies[j]);
+			for (let i = 0; i < values.length; i++) {
+				if (Array.isArray(values[i])) {
+					for (let n = 0; n < values[i].length; n++) {
+						if (values[i][n].toLowerCase().indexOf(name) !== -1)
+						return true;
+					}
+				}	
+				else if (typeof values[i] === "string") {
+					if (values[i].toLowerCase().indexOf(name) !== -1)
+						return true;
+				}
+			}
+		}	
+	}	
+	return false
+}
 // ~~~~~~~~~~~~~~~~~~~~~~ Advanced ~~~~~~~~~~~~~~~~~~~~~~
 
 // 1.Tagging System: Some books have multiple categories, have won awards, are on a best-seller list, or have other special characteristics. Let's incorporate a tagging system that will allow us to represent all of these. Write functions addTag and removeTag that each accept a book and a tag as parameters, and either add tags or remove tags respectively.
