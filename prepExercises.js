@@ -19,7 +19,33 @@
 //  Description
 
 // 2.In terms of the properties of books that you thought of, represent the following books as data:
+var book1 = {
+    title: 'Harry Potter and the sorcerer \' s Stone',
+    author1: 'J.K.Rowling',
+    author2: 'N/A',
+    price: '32,5 $',
+    genre: 'fantasy',
+    numberOfPages:  '223',
 
+};
+var book2 = {
+    title: 'Romeo and Juliet',
+    author: 'William Shakespeare',
+    author2: 'N/A',
+    price: '15,34 $',
+    genre: 'Romance',
+    numberOfPages:  '234',
+    
+};
+var book3 = {
+    title: 'Structure and Interpretation of Computer Programs',
+    author: 'Gerald Jay Sussman',
+    author2: 'Hal Abelson',
+    price: '20,00 $',
+    genre: 'Textbook',
+    numberOfPages:  '657',
+   
+};
 //  Harry Potter and the Sorcerer's Stone (J.K. Rowling)
 //  Romeo and Juliet (William Shakespeare)
 //  Structure and Interpretation of Computer Programs (Gerald Jay Sussman, Hal Abelson)
@@ -27,13 +53,23 @@
 //  Three other books (see this list for ideas)
 
 // 3.You may have been rewriting the same type of object over and over. We need to stay DRY (Do Not Repeat). Write a function makeBook that takes as arguments different attributes of a book and returns an object representing that book that has the proper structure (we call this a factory function).
-
+function makeBook(title, author1, author2, price, genre, numberOfPages){
+    return {
+        title: title,
+        author1: author1,
+        author2: author2,
+        price: price,
+        genre: genre,
+        numberOfPages: numberOfPages,
+       
+    };
+}
 // 4.Look at one of your book objects in the console. This is the object inspector. The object inspector is nice to have, but it will be easier to have a function to display the more important information easily. Write a function called displayBook that takes a book as an argument, and returns the important information in a more readable way, for example:
 
 // var sorcerersStone = { /* ... */ }
-//  function displayBook(book) {
-//        // ...
-//  }
+function displayBook(book) {
+   return book.title + ', by ' + book.author1 + ' , ' + book.genre + ', ' + book.price;
+}
 //  displayBook(sorcerersStone);
 //  // => 'Harry Potter and the Sorcerer's Stone, by J.K. Rowling -- fantasy, $24.99'
 // The output string above is only an example. What information is most important to you? How can you make that information easier to read for people?
