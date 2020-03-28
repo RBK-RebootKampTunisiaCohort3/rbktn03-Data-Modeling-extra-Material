@@ -116,7 +116,7 @@ function displayBooks(array){
 //  'Harry Potter'.indexOf('dog');  // => -1
 //  A good starting point would be to write a function isMatch that accepts two arguments – the query and a single book –
 //  and returns true if the book is a match, and false otherwise.
-function isMatch(books, name) {					// this function searches for any query, that matches the name of book, author, genre
+function isMatchb(books, name) {					// this function searches for any query, that matches the name of book, author, genre
 	let values;														// It could be a part of the name like pot or part of the author name like Jay	
 	if (typeof name === "string") {
 		name = name.toLowerCase();
@@ -240,8 +240,8 @@ function avgRating(array){
 	return "Average rating for " + array.length + " movies is " + 100 * avg.toFixed(2) + "%.";
 }
 // 9.How about searching your movies array? Write a function that works like searchBooks, but for movies.
-function isMatch(movies, name) {					// this function searches for any query, that matches the name of book, author, genre
-	let values;														// It could be a part of the name like pot or part of the author name like Jay	
+function isMatchm(movies, name) {					// this function searches for any query [genre or movie title], that matches the title or movie genre
+	let values;														// if searching for name query It could be a part of the name while if searching for genre it must matches the whole genre.
 	if (typeof name === "string") {
 		name = name.toLowerCase();
 		for (let j = 0; j < movies.length; j++) {
@@ -249,7 +249,7 @@ function isMatch(movies, name) {					// this function searches for any query, th
 			for (let i = 0; i < values.length; i++) {
 				if (Array.isArray(values[i])) {
 					for (let n = 0; n < values[i].length; n++) {
-						if (values[i][n].toLowerCase().indexOf(name) !== -1)
+						if (values[i][n].toLowerCase() === name.toLowerCase())
 						return true;
 					}
 				}	
@@ -264,21 +264,73 @@ function isMatch(movies, name) {					// this function searches for any query, th
 }
 // ~~~~~~~~~~~~~~~~~~~~~~ Advanced ~~~~~~~~~~~~~~~~~~~~~~
 
-// 1.Tagging System: Some books have multiple categories, have won awards, are on a best-seller list, or have other special characteristics. Let's incorporate a tagging system that will allow us to represent all of these. Write functions addTag and removeTag that each accept a book and a tag as parameters, and either add tags or remove tags respectively.
-
+// 1.Tagging System: Some books have multiple categories, have won awards, are on a best-seller list, 
+//or have other special characteristics. Let's incorporate a tagging system that
+// will allow us to represent all of these. Write functions addTag and removeTag that each accept a book 
+// and a tag as parameters, and either add tags or remove tags respectively.
 //  Considerations:
 //  If you included a genre key, replace it with a tag.
 //  What if you use addTag on a book that has no tags yet?
-//  What if you attempt to use addTag with the same tag (on the same book) multiple times? Should it be possible to have the same tag twice?
+//  What if you attempt to use addTag with the same tag (on the same book) multiple times? 
+//Should it be possible to have the same tag twice?
 //  Add some tags to multiple books, like 'bestseller' or 'pulitzer'.
 //  Extend
 //  Extend searchBooks to work with tags.
+function addTag(book, tag) {
+	if(searchBooks(books, tag))
+		return "tag already exist or wrong tag format";
 
-// 2.Let's revisit your removeBooks function: what would happen if you had two books with the same title, but different authors? Would your algorithm remove both books? This is a common problem that we usually solve by providing a unique identifier for each item.
+	let keys = Object.keys(book);
+	for (let i = 0; i < keys.length; i++) {
+		if (keys[i] === "genre") {
+			delete book[keys[i]];
+			book.tag = [];
+			book.tag.push(tag);
+			return book;
+ 		}
+			else if (keys[i] === 'tag') {
+				book.tag.push(tag);
+				return book;
+			}
+		}
+
+	book.tag = [];
+ 	book.tag.push(tag);
+ 	return book;
+}
+
+
+function searchBooks(books, name) {					// this function searches for tag, a srting or array, number tages are wrong format.
+	let values;															
+	if (typeof name === "string") {
+		name = name.toLowerCase();
+		for (let j = 0; j < books.length; j++) {
+			values = Object.values(books[j]);
+			for (let i = 0; i < values.length; i++) {
+				if (Array.isArray(values[i])) {
+					for (let n = 0; n < values[i].length; n++) {
+						if (values[i][n] === name)
+						return true;
+					}
+				}
+				else if(typeof values[i] === "string")
+					if(values[i] === name)
+						return true;
+			}
+		}	
+	}
+	else if (typeof name === "number")
+		return true;
+	return false
+}
+// 2.Let's revisit your removeBooks function: what would happen if you had two books with the same title, but different authors? 
+// Would your algorithm remove both books? This is a common problem that we usually solve by providing a unique identifier for each item.
 
 //  Modify all of your books to contain an id key with a unique value. This can be an integer or a unique string (like an ISBN).
 //  Change removeBook to use the book's id for lookups instead of its title.
 
-// 3.Can you think of a way to write a more abstract displayItem function that works for books and movies (depending on how you have structured your objects, this may or may not work well)?
+// 3.Can you think of a way to write a more abstract displayItem function that works for books and movies 
+//(depending on how you have structured your objects, this may or may not work well)?
 
-// 4.Write a more general searchItems function that accepts as parameters the query, items to search, and an array of keys that should be searched. Refactor searchMovies and searchBooks to use this function.
+// 4.Write a more general searchItems function that accepts as parameters the query, items to search, and an array of keys that should be searched. 
+//Refactor searchMovies and searchBooks to use this function.
