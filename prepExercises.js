@@ -161,6 +161,23 @@ return result;
 
 // 8.Write a function removeBook that, given a book's title and an array of books, returns a new array of books that does not contain the book with the provided title.
 
+function removeBook(arr, bookTitle) {
+
+	var bookTitleLwr = bookTitle.toLowerCase();
+
+	for (var i = 0; i < arr.length ; i += 1) {
+		
+		if(arr[i]["title"].toLowerCase() === bookTitleLwr) {
+
+			arr.splice(i, 1);
+
+		}
+
+	}
+
+return arr;
+
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~ More Practice ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -173,6 +190,182 @@ return result;
 //  is the rating from critics? Rotten Tomatoes (a famous American website that rates how good movies are)? Some combination?
 
 // 2.Make five more movie objects using the same format you decided upon.
+
+var movie1 = {
+
+				title: 'black panther',
+				director: 'Ryan Coogler',
+				type: 'action',
+				duration: 134,
+				releaseDate: '16 february 2018',
+				actors: [
+					{name: "Chadwick Boseman",
+					sex: "male",
+					age: 45},
+
+					{name: "Michael B. Jordan",
+					sex: "male",
+					age: 48},
+
+					{name: "Letitia Wright",
+					sex: "female",
+					age: 37},
+
+					{name: "Danai Gurira",
+					sex: "male",
+					age: 33}
+					],
+
+				rating: 97	
+};
+
+var movie2 = {
+
+				title: 'unforgotten',
+				director: 'Chris Lang',
+				type: 'drama',
+				duration: 45,
+				releaseDate: '20 march 2015',
+				actors: [
+					{name: "Nicola Walker",
+					sex: "female",
+					age: 33},
+
+					{name: "Sanjeev Bhaskar",
+					sex: "male",
+					age: 51},
+
+					{name: "Lewis Reeves",
+					sex: "male",
+					age: 27},
+
+					{name: "Carolina Main",
+					sex: "female",
+					age: 30},
+
+					{name: "Trevor Eve",
+					sex: "male",
+					age: 62}
+					],
+
+				rating: 88	
+};
+
+var movie3 = {
+
+				title: 'Under the Silver Lake',
+				director: 'David Robert Mitchell',
+				type: 'mystery',
+				duration: 139,
+				releaseDate: '19 april 2019',
+				actors: [
+					{name: "Andrew Garfield",
+					sex: "male",
+					age: 32},
+
+					{name: "Riley Keough",
+					sex: "female",
+					age: 42},
+
+					{name: "Riki Lindhome",
+					sex: "female",
+					age: 26},
+
+					{name: "Tucker Meek",
+					sex: "male",
+					age: 19},
+
+					{name: "Stephanie Moore",
+					sex: "female",
+					age: 33},
+
+					{name: "Topher Grace",
+					sex: "male",
+					age: 43}
+					],
+
+				rating: 91	
+};
+
+var movie4 = {
+
+				title: 'Sick Note',
+				director: 'James Serafinowicz',
+				type: 'comedy',
+				duration: 78,
+				releaseDate: '26 june 2017',
+				actors: [
+					{name: "Rupert Grint",
+					sex: "male",
+					age: 39},
+
+					{name: "Nick Frost",
+					sex: "male",
+					age: 46},
+
+					{name: "Karl Theobald",
+					sex: "male",
+					age: 34},
+
+					{name: "Lindsay Lohan",
+					sex: "female",
+					age: 28},
+
+					{name: "Miles Richardson",
+					sex: "male",
+					age: 40},
+
+					{name: "Wanda Opalinska",
+					sex: "female",
+					age: 21},
+
+					{name: "Daniel Rigby",
+					sex: "male",
+					age: 29},
+
+					{name: "Lasco Atkins",
+					sex: "male",
+					age: 36}
+					],
+
+				rating: 78	
+};
+
+var movie5 = {
+
+				title: 'The Dunwich Horror',
+				director: 'Leigh Scott',
+				type: 'thriller',
+				duration: 91,
+				releaseDate: '13 december 2009',
+				actors: [
+					{name: "Jeffrey Combs",
+					sex: "male",
+					age: 44},
+
+					{name: "Sarah Lieving",
+					sex: "female",
+					age: 41},
+
+					{name: "Dean Stockwell",
+					sex: "male",
+					age: 57},
+
+					{name: "Richard Zeringue",
+					sex: "male",
+					age: 38},
+
+					{name: "Lauren Michele",
+					sex: "female",
+					age: 25},
+
+					{name: "Natacha Itzel",
+					sex: "female",
+					age: 29}
+					],
+
+				rating: 69
+};
 
 // 3. Write a factory function for movies. HINT: What is a factory function? We explained it above!
 
